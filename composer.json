@@ -1,0 +1,15 @@
+{
+    "name": "aleron75/magehandles",
+    "description": "A Magento Module that adds useful layout handles.",
+    "type": "magento-module",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "Alessandro Ronchi",
+            "email": "aleron75@gmail.com"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
