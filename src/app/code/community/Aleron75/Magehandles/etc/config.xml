@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Aleron75_Magehandles>
+            <version>0.1.0</version>
+        </Aleron75_Magehandles>
+    </modules>
+
+    <global>
+        <models>
+            <aleron75_magehandles>
+                <class>Aleron75_Magehandles_Model</class>
+            </aleron75_magehandles>
+        </models>
+    </global>
+</config>
