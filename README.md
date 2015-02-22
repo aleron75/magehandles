@@ -1,2 +1,2 @@
 # magehandles
-Adds useful layou handles
+Work in progress...
