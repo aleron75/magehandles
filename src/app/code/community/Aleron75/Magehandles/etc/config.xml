@@ -12,5 +12,23 @@
                 <class>Aleron75_Magehandles_Model</class>
             </aleron75_magehandles>
         </models>
+        <helpers>
+            <aleron75_magehandles>
+                <class>Aleron75_Magehandles_Helper</class>
+            </aleron75_magehandles>
+        </helpers>
     </global>
+
+    <frontend>
+        <events>
+            <controller_action_layout_load_before>
+                <observers>
+                    <aleron75_magehandles>
+                        <class>aleron75_magehandles/observer</class>
+                        <method>addCustomHandles</method>
+                    </aleron75_magehandles>
+                </observers>
+            </controller_action_layout_load_before>
+        </events>
+    </frontend>
 </config>
