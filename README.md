@@ -38,14 +38,14 @@ Add the dependency to your `composer.json`:
       ...
       "require": {
         ...
-        "aleron75/magelog": "dev-master",
+        "aleron75/magehandles": "dev-master",
         ...
       },
       "repositories": [
         ...
         {
           "type": "vcs",
-          "url":  "git@github.com:aleron75/magelog.git"
+          "url":  "git@github.com:aleron75/magehandles.git"
         },
         ...
       ],
