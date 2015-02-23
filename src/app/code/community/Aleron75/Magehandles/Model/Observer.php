@@ -7,7 +7,7 @@ class Aleron75_Magehandles_Model_Observer
         $updateManager = $observer->getLayout()->getUpdate();
         $this->_addCustomerGenderHandle($updateManager);
         $this->_addCustomerBirthdayHandle($updateManager);
-        $this->_addSeasonHandles($updateManager);
+        $this->_addSeasonHandle($updateManager);
     }
 
 
@@ -42,7 +42,7 @@ class Aleron75_Magehandles_Model_Observer
         }
     }
 
-    private function _addSeasonHandles(Mage_Core_Model_Layout_Update $updateManager)
+    private function _addSeasonHandle(Mage_Core_Model_Layout_Update $updateManager)
     {
         $helper = Mage::helper('aleron75_magehandles');
         $season = $helper->getSeason();
