@@ -6,6 +6,7 @@ class Aleron75_Magehandles_Model_Observer
         /** @var Mage_Core_Model_Layout_Update $updateManager */
         $updateManager = $observer->getLayout()->getUpdate();
         $this->_addCustomerGenderHandle($updateManager);
+        $this->_addCustomerBirthdayHandle($updateManager);
         $this->_addSeasonHandles($updateManager);
     }
 
@@ -22,6 +23,21 @@ class Aleron75_Magehandles_Model_Observer
                     ->getSource()
                     ->getOptionText($genderOptionId));
                 $updateManager->addHandle("customer_gender_{$gender}");
+            }
+        }
+    }
+
+    private function _addCustomerBirthdayHandle(Mage_Core_Model_Layout_Update $updateManager)
+    {
+        $customerHelper = Mage::helper('customer');
+        if ($customerHelper->isLoggedIn()) {
+            /** @var Mage_Customer_Model_Customer $currentCustomer */
+            $currentCustomer = $customerHelper->getCurrentCustomer();
+            if ($birthDate = $currentCustomer->getDob()) {
+                $helper = Mage::helper('aleron75_magehandles');
+                if ($helper->isBirthday($birthDate)) {
+                    $updateManager->addHandle("customer_birthday");
+                }
             }
         }
     }

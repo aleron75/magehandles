@@ -1,6 +1,16 @@
 <?php
 class Aleron75_Magehandles_Helper_Data extends Mage_Core_Helper_Abstract
 {
+    public function isBirthday($birthdate)
+    {
+        if (empty($birthdate)) {
+            return false;
+        }
+        $currentDayMonth = date("m-d");
+        $birthdateDayMonth = substr($birthdate, 5, 5);
+        return $currentDayMonth == $birthdateDayMonth;
+    }
+
     public function getSeason()
     {
         if ($this->_isWinter()) {
