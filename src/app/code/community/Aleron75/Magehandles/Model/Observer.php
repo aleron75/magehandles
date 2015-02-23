@@ -7,6 +7,7 @@ class Aleron75_Magehandles_Model_Observer
         $updateManager = $observer->getLayout()->getUpdate();
         $this->_addCustomerGenderHandle($updateManager);
         $this->_addCustomerBirthdayHandle($updateManager);
+        $this->_addCustomerIsSubscribedHandle($updateManager);
         $this->_addSeasonHandle($updateManager);
     }
 
@@ -39,6 +40,21 @@ class Aleron75_Magehandles_Model_Observer
                     $updateManager->addHandle("customer_birthday");
                 }
             }
+        }
+    }
+
+    private function _addCustomerIsSubscribedHandle(Mage_Core_Model_Layout_Update $updateManager)
+    {
+        $customerHelper = Mage::helper('customer');
+        if ($customerHelper->isLoggedIn()) {
+            /** @var Mage_Customer_Model_Customer $currentCustomer */
+            $currentCustomer = $customerHelper->getCurrentCustomer();
+            $subscriber = Mage::getModel('newsletter/subscriber')->loadByCustomer($currentCustomer);
+            if ($subscriber->isSubscribed()) {
+                $updateManager->addHandle("customer_subscribed");
+                return;
+            }
+            $updateManager->addHandle("customer_not_subscribed");
         }
     }
 
