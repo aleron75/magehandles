@@ -56,10 +56,9 @@ Add the dependency to your `composer.json`:
       ...
     }
 
-Then run the following command from the directory where your `composer.json`
-file is contained:
+Then run the following command from the directory where your composer.json file is contained:
 
-    $ php composer.phar install
+    php composer.phar install
 
 or
 
@@ -78,17 +77,17 @@ Usage example
 After installation the following handles will be added to frontend layout:
 
 * Season Handles
-    * season_winter - from December 1 to February 29;
-    * season_spring - from March 1 and to May 31;
-    * season_summer - from June 1 to August 31;
-    * season_autumn - from September 1 to November 30
+    * `season_winter` - from December 1 to February 29;
+    * `season_spring` - from March 1 and to May 31;
+    * `season_summer` - from June 1 to August 31;
+    * `season_autumn` - from September 1 to November 30
 
 * Customer Handles
-    * customer_gender_male - if Customer specified his gender
-    * customer_gender_female - if Customer specified her gender
-    * customer_birthday - if Customer specified his/her date of birth and current date is his/her birthday
-    * customer_subscribed - if Customer subscribed to the newsletter
-    * customer_not_subscribed - if Customer didn't subscribe to the newsletter
+    * `customer_gender_male` - if Customer specified his gender
+    * `customer_gender_female` - if Customer specified her gender
+    * `customer_birthday` - if Customer specified his/her date of birth and it's his/her birthday
+    * `customer_subscribed` - if Customer subscribed to the newsletter
+    * `customer_not_subscribed` - if Customer didn't subscribe to the newsletter
 
 License
 -------
