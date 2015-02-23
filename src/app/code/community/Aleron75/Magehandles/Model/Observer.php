@@ -5,9 +5,26 @@ class Aleron75_Magehandles_Model_Observer
     {
         /** @var Mage_Core_Model_Layout_Update $updateManager */
         $updateManager = $observer->getLayout()->getUpdate();
+        $this->_addCustomerGenderHandle($updateManager);
         $this->_addSeasonHandles($updateManager);
     }
 
+
+    private function _addCustomerGenderHandle(Mage_Core_Model_Layout_Update $updateManager)
+    {
+        $customerHelper = Mage::helper('customer');
+        if ($customerHelper->isLoggedIn()) {
+            /** @var Mage_Customer_Model_Customer $currentCustomer */
+            $currentCustomer = $customerHelper->getCurrentCustomer();
+            if ($genderOptionId = $currentCustomer->getGender()) {
+                $gender = strtolower($currentCustomer->getResource()
+                    ->getAttribute('gender')
+                    ->getSource()
+                    ->getOptionText($genderOptionId));
+                $updateManager->addHandle("customer_gender_{$gender}");
+            }
+        }
+    }
 
     private function _addSeasonHandles(Mage_Core_Model_Layout_Update $updateManager)
     {
