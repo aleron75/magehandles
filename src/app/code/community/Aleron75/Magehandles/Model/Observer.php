@@ -5,12 +5,23 @@ class Aleron75_Magehandles_Model_Observer
     {
         /** @var Mage_Core_Model_Layout_Update $updateManager */
         $updateManager = $observer->getLayout()->getUpdate();
+        $this->_addCustomerGroupHandle($updateManager);
         $this->_addCustomerGenderHandle($updateManager);
         $this->_addCustomerBirthdayHandle($updateManager);
         $this->_addCustomerIsSubscribedHandle($updateManager);
         $this->_addSeasonHandle($updateManager);
     }
 
+    private function _addCustomerGroupHandle(Mage_Core_Model_Layout_Update $updateManager)
+    {
+        $customerHelper = Mage::helper('customer');
+        $currentCustomer = $customerHelper->getCurrentCustomer();
+        if ($groupId = $currentCustomer->getGroupId()) {
+            $customerGroup = Mage::getModel('customer/group')->load($groupId );
+            $groupCode = strtolower(preg_replace("/[^-a-zA-Z0-9]+/", "", $customerGroup->getCode()));
+            $updateManager->addHandle("customer_group_{$groupCode}");
+        }
+    }
 
     private function _addCustomerGenderHandle(Mage_Core_Model_Layout_Update $updateManager)
     {
